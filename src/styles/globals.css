@@ -3,6 +3,24 @@
 @tailwind utilities;
 
 @layer components {
+  ::-webkit-scrollbar {
+    @apply w-2 rounded-lg;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-lg bg-gray-400;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
   .link {
     @apply cursor-pointer hover:underline;
   }
@@ -11,5 +29,9 @@
     @apply p-2 text-xs md:text-sm bg-gradient-to-b from-yellow-200 to-yellow-400 border border-yellow-300 rounded-sm focus:outline-none focus:ring-1
     focus:ring-yellow-500
     active:from-yellow-500;
+  }
+
+  .button-disabled {
+    @apply p-2 text-xs md:text-sm bg-gradient-to-b  from-gray-300 to-gray-500 border-gray-200 text-gray-200  rounded-sm focus:outline-none cursor-not-allowed;
   }
 }
