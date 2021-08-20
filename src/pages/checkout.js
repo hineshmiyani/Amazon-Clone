@@ -1,10 +1,14 @@
 import Image from "next/image";
-import CheckoutProdcuts from "../components/CheckoutProdcuts";
-import { useSelector } from "react-redux";
 import Header from "../components/Header";
+import CheckoutProdcuts from "../components/CheckoutProdcuts";
 import { selectItems, selectTotal } from "../slices/basketSlice";
-import Currency from "react-currency-formatter";
+import { useSelector } from "react-redux";
 import { useSession } from "next-auth/client";
+import Currency from "react-currency-formatter";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+
+const stripePromise = loadStripe(process.env.stripe_public_key);
 
 function Checkout() {
   const items = useSelector(selectItems);
@@ -12,10 +16,25 @@ function Checkout() {
 
   const [session] = useSession();
 
+  const createCheckoutSession = async () => {
+    const stripe = await stripePromise;
+
+    // Call the backend to create checkout session.
+    const checkoutSession = await axios.post("/api/create-checkout-session", {
+      items: items,
+      email: session.user.email,
+    });
+  };
+
   return (
     <div className="bg-gray-100">
-      <Header />
-      <main className="lg:flex max-w-screen-2xl mx-auto">
+      {/* Header */}
+      <div className="fixed top-0 left-0 w-full z-50">
+        <Header />
+      </div>
+
+      {/* main */}
+      <main className="lg:flex max-w-screen-2xl mx-auto relative top-[6rem]">
         {/* Left */}
         <div className="flex-grow m-5 shadow-sm ">
           <Image
@@ -61,6 +80,8 @@ function Checkout() {
 
               {/* Below 'button'  are custom tailwind css class  */}
               <button
+                role="link"
+                onClick={createCheckoutSession}
                 disabled={!session}
                 className={`button m-2 ${!session && "button-disabled"}`}
               >

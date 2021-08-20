@@ -12,9 +12,11 @@ export default function Home({ products }) {
       </Head>
 
       {/* Header */}
-      <Header />
+      <header div className="fixed top-0 left-0 w-full z-50">
+        <Header />
+      </header>
 
-      <main className="max-w-screen-2xl mx-auto">
+      <main className="max-w-screen-2xl mx-auto relative top-[6rem]">
         {/* Banner */}
         <Banner />
 
@@ -23,7 +25,9 @@ export default function Home({ products }) {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <footer className=" mt-[6rem] h-full">
+        <Footer />
+      </footer>
     </div>
   );
 }

@@ -18,16 +18,18 @@ function Header() {
   const items = useSelector(selectItems);
 
   return (
-    <header className="">
+    <header className="w-full ">
       {/* Top nav */}
 
-      <div className="flex items-center bg-amazon_blue px-1 py-1  flex-grow justify-between">
+      <div className="flex items-center bg-amazon_blue px-1 py-1  flex-grow justify-between  ">
         {/* Left */}
 
         <div className="flex">
-          <div className="link hidden sm:flex mt-2  items-center flex-grow-0 sm:flex-grow-0">
+          <div
+            onClick={() => router.push("/")}
+            className="link hidden sm:flex mt-2  items-center flex-grow-0 sm:flex-grow-0"
+          >
             <Image
-              onClick={() => router.push("/")}
               src="https://bit.ly/3CNFVo3"
               width={150}
               height={40}
