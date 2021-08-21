@@ -24,6 +24,12 @@ function Checkout() {
       items: items,
       email: session.user.email,
     });
+
+    // Redirect user/customer to Stripe Checkout
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
   };
 
   return (
@@ -68,7 +74,7 @@ function Checkout() {
         </div>
 
         {/* Right */}
-        <div classname="">
+        <div className="">
           {items.length > 0 && (
             <div className="flex flex-col bg-white  p-10 m-5 h-full">
               <h2 className="whitespace-nowrap">
