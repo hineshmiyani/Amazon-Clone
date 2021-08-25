@@ -38,7 +38,10 @@ function Header() {
             />
           </div>
 
-          <div className="link flex sm:hidden   items-center flex-grow-0 sm:flex-grow-0">
+          <div
+            onClick={() => router.push("/")}
+            className="link flex sm:hidden   items-center flex-grow-0 sm:flex-grow-0"
+          >
             <Image
               src="https://bit.ly/3ANR4n0"
               width={60}
@@ -88,7 +91,10 @@ function Header() {
             <p className="font-bold md:text-sm">Account & Lists</p>
           </div>
 
-          <div className="link">
+          <div
+            onClick={() => session && router.push("/orders")}
+            className="link"
+          >
             <p>Returns</p>
             <p className="font-bold md:text-sm">& Orders</p>
           </div>

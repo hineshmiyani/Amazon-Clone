@@ -73,7 +73,7 @@ function CheckoutProdcuts({
 
       {/* Right Side  add/remove buttons*/}
 
-      <div className="flex flex-col space-y-2 justify-center xl:w-56 xl:mx-auto ">
+      <div className="flex flex-col space-y-2 justify-center xl:w-48 xl:mx-auto ">
         <button onClick={addItemToBasket} className="button ">
           Add to Cart
         </button>

@@ -32,7 +32,7 @@ export default async (req, res) => {
     cancel_url: `${process.env.HOST}/checkout`,
     metadata: {
       email: email,
-      images: JSON.stringify(transformedItems.map((item) => item.image)),
+      images: JSON.stringify(items.map((item) => item.image)),
     },
   });
 
